@@ -49,6 +49,26 @@ A comprehensive framework for Playwright testing with support for:
 
 ## Installation
 
+### One-Command Setup
+
+Stagehand includes a one-command setup script that handles everything:
+
+```bash
+npm run setup
+```
+
+This will:
+- ✅ Check Node.js version
+- ✅ Install all dependencies
+- ✅ Install Playwright browsers
+- ✅ Create `.env` file from template
+- ✅ Create necessary directories
+- ✅ Verify installation
+
+### Manual Setup
+
+If you prefer manual setup:
+
 1. Clone or copy this repository
 2. Install dependencies:
    ```bash
@@ -95,6 +115,45 @@ Stagehand/
 
 ## Usage
 
+### Test Layers
+
+Stagehand supports multiple test layers:
+
+```bash
+# End-to-End tests
+npm run test:e2e
+
+# Integration tests
+npm run test:integration
+
+# API tests
+npm run test:api
+
+# Contract tests
+npm run test:contract
+
+# Accessibility tests
+npm run test:accessibility
+
+# Security tests
+npm run test:security
+
+# Chaos/Resilience tests
+npm run test:chaos
+
+# Network resilience tests
+npm run test:network
+
+# Mock tests
+npm run test:mock
+
+# Validation tests
+npm run test:validation
+
+# Run all tests
+npm run test:all
+```
+
 ### Web Testing
 
 Run web tests:
@@ -132,6 +191,23 @@ npm run test:mobile:web
    npx playwright test --config=src/configs/playwright.mobile.config.ts --project=mobile-android-native
    npx playwright test --config=src/configs/playwright.mobile.config.ts --project=mobile-ios-native
    ```
+
+### AI-Powered Test Generation
+
+Stagehand includes AI ChatModes for test generation and healing:
+
+```bash
+# Plan and generate tests from requirements
+npm run ai:plan "User login and registration flow"
+
+# Generate test code from description
+npm run ai:generate "E2E test for checkout process"
+
+# Heal broken tests
+npm run ai:heal tests/e2e/login.spec.ts "Element not found"
+```
+
+**Note:** Set `OPENAI_API_KEY` environment variable for AI features.
 
 ### Docker Testing
 
@@ -197,6 +273,22 @@ IOS_PLATFORM_VERSION=17.0
 
 ## Writing Tests
 
+### Page Object Model (POM)
+
+Stagehand uses Page Object Model pattern for maintainable tests:
+
+```typescript
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../src/pages/LoginPage';
+
+test('should login successfully', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await loginPage.goto();
+  await loginPage.login('user@example.com', 'password123');
+  await expect(page).toHaveURL(/.*dashboard/);
+});
+```
+
 ### Web Tests
 
 ```typescript
@@ -205,6 +297,33 @@ import { test, expect } from '@playwright/test';
 test('should load homepage', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/Example/);
+});
+```
+
+### E2E Tests
+
+```typescript
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../src/pages/LoginPage';
+
+test('complete user registration and login flow', async ({ page }) => {
+  // Registration
+  await page.goto('/register');
+  await page.fill('[data-testid="email-input"]', 'user@example.com');
+  // ... complete flow
+});
+```
+
+### API Tests
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('GET /api/users should return user list', async ({ request }) => {
+  const response = await request.get('/api/users');
+  expect(response.status()).toBe(200);
+  const body = await response.json();
+  expect(body).toHaveProperty('data');
 });
 ```
 
@@ -231,16 +350,10 @@ mobileTest.describe('Native App Tests', () => {
       return;
     }
 
-    // Wait for element
     await nativeApp.waitForElement('email-input');
-
-    // Type text
     await nativeApp.type('email-input', 'user@example.com');
-
-    // Click element
     await nativeApp.click('login-button');
-
-    // Verify app is responsive
+    
     const isResponsive = await nativeApp.isAppResponsive();
     expect(isResponsive).toBeTruthy();
   });

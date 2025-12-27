@@ -4,14 +4,29 @@
   "description": "Stagehand is a scalable Playwright automation framework built with TypeScript to support reliable end-to-end testing. Designed to work behind the scenes, it provides a strong foundation with reusable utilities, clean architecture, CI/CD readiness, and rich reporting to ensure consistent test execution across environments.",
   "main": "index.js",
   "scripts": {
+    "setup": "bash scripts/setup.sh",
     "test": "playwright test",
     "test:web": "playwright test --config=src/configs/playwright.web.config.ts",
     "test:mobile": "playwright test --config=src/configs/playwright.mobile.config.ts",
     "test:mobile:web": "playwright test --config=src/configs/playwright.mobile.config.ts --project=mobile-android-pixel-web",
     "test:mobile:native": "playwright test --config=src/configs/playwright.mobile.config.ts --project=mobile-android-native",
+    "test:e2e": "playwright test tests/e2e",
+    "test:integration": "playwright test tests/integration",
+    "test:api": "playwright test tests/api",
+    "test:contract": "playwright test tests/contract",
+    "test:accessibility": "playwright test tests/accessibility",
+    "test:security": "playwright test tests/security",
+    "test:chaos": "playwright test tests/chaos",
+    "test:network": "playwright test tests/network",
+    "test:mock": "playwright test tests/mock",
+    "test:validation": "playwright test tests/validation",
+    "test:all": "playwright test",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
     "test:headed": "playwright test --headed",
+    "ai:plan": "tsx src/ai/cli.ts plan",
+    "ai:generate": "tsx src/ai/cli.ts generate",
+    "ai:heal": "tsx src/ai/cli.ts heal",
     "playwright:install": "playwright install",
     "playwright:install:deps": "playwright install-deps",
     "report": "playwright show-report",
@@ -32,7 +47,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "openai": "^4.20.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
@@ -41,6 +57,8 @@
     "appium": "^2.4.1",
     "appium-uiautomator2-driver": "^2.34.1",
     "appium-xcuitest-driver": "^4.20.1",
+    "axe-playwright": "^4.8.0",
+    "tsx": "^4.7.0",
     "typescript": "~5.6.2"
   },
   "engines": {

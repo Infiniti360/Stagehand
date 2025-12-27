@@ -16,6 +16,8 @@ export default defineConfig({
 	retries: IS_CI ? 2 : 0,
 	workers: IS_CI ? 4 : undefined,
 	reporter: [
+		// Custom Stagehand reporter - enhanced reporting with test categorization
+		[customReporterPath],
 		// Console reporter - shows test progress in terminal
 		['list'],
 		// HTML reporter - interactive HTML report with step viewer
