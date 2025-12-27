@@ -1,0 +1,50 @@
+# Playwright Docker Configuration
+#
+# Quick Start:
+#   docker-compose -f docker/docker-compose.yml run --rm playwright test
+
+services:
+  # Playwright Test Runner
+  # Uses host.docker.internal to connect to locally running services
+  playwright:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: playwright-boilerplate
+    profiles:
+      - testing
+    environment:
+      # CI/CD mode
+      - CI=${CI:-false}
+      - NODE_ENV=test
+      - HEADLESS=${HEADLESS:-true}
+      
+      # Test environment (local, staging, prod)
+      - TEST_ENV=${TEST_ENV:-local}
+      
+      # Service URLs - uses host.docker.internal to reach host machine
+      - BASE_URL=${BASE_URL:-http://host.docker.internal:3000}
+      
+      # Playwright timeouts
+      - PLAYWRIGHT_NAVIGATION_TIMEOUT=${PLAYWRIGHT_NAVIGATION_TIMEOUT:-60000}
+      
+      # SSL configuration
+      - IGNORE_HTTPS_ERRORS=${IGNORE_HTTPS_ERRORS:-false}
+    volumes:
+      # Mount test files
+      - ../tests:/app/tests:ro
+      - ../src:/app/src:ro
+      
+      # Mount reports directory for output (writable)
+      - ../reports:/app/reports
+      - ../test-results:/app/test-results
+    extra_hosts:
+      # Allow container to reach host machine services
+      - "host.docker.internal:host-gateway"
+    networks:
+      - playwright-network
+    working_dir: /app
+
+networks:
+  playwright-network:
+    driver: bridge

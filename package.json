@@ -1,0 +1,50 @@
+{
+  "name": "stagehand",
+  "version": "1.0.0",
+  "description": "Stagehand is a scalable Playwright automation framework built with TypeScript to support reliable end-to-end testing. Designed to work behind the scenes, it provides a strong foundation with reusable utilities, clean architecture, CI/CD readiness, and rich reporting to ensure consistent test execution across environments.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:web": "playwright test --config=src/configs/playwright.web.config.ts",
+    "test:mobile": "playwright test --config=src/configs/playwright.mobile.config.ts",
+    "test:mobile:web": "playwright test --config=src/configs/playwright.mobile.config.ts --project=mobile-android-pixel-web",
+    "test:mobile:native": "playwright test --config=src/configs/playwright.mobile.config.ts --project=mobile-android-native",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:headed": "playwright test --headed",
+    "playwright:install": "playwright install",
+    "playwright:install:deps": "playwright install-deps",
+    "report": "playwright show-report",
+    "trace": "playwright show-trace",
+    "appium:start": "appium",
+    "docker:build": "docker build -t playwright-boilerplate -f docker/Dockerfile .",
+    "docker:test": "docker-compose -f docker/docker-compose.yml run --rm playwright test"
+  },
+  "keywords": [
+    "playwright",
+    "testing",
+    "e2e",
+    "appium",
+    "mobile",
+    "web",
+    "native"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^22.14.0",
+    "allure-playwright": "^2.15.1",
+    "appium": "^2.4.1",
+    "appium-uiautomator2-driver": "^2.34.1",
+    "appium-xcuitest-driver": "^4.20.1",
+    "typescript": "~5.6.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
