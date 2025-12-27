@@ -36,14 +36,63 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Contributing guidelines (CONTRIBUTING.md)
 - Project summary (SUMMARY.md)
 
+## [1.1.0] - 2024-12-27
+
+### Added
+- **One-command setup script** (`npm run setup`) for automated installation
+- **AI ChatModes & Agents** for test generation and healing:
+  - Planner Agent: Plans test scenarios from requirements
+  - Generator Agent: Generates test code from plans
+  - Healer Agent: Suggests fixes for broken tests
+  - CLI tool for AI features (`npm run ai:plan`, `npm run ai:generate`, `npm run ai:heal`)
+- **Page Object Model (POM)** structure:
+  - BasePage class with common methods
+  - LoginPage example implementation
+  - Extensible POM architecture
+- **Multiple Test Layers**:
+  - Accessibility tests (WCAG compliance)
+  - Chaos testing (resilience and error handling)
+  - Contract testing (API schema validation)
+  - E2E tests (complete user journeys)
+  - Integration tests (component integration)
+  - Mock tests (mocked API responses)
+  - Network resilience tests (network conditions)
+  - Security tests (vulnerability testing)
+  - Validation tests (form and data validation)
+- **Custom Test Reporter** with:
+  - Test categorization by type and layer
+  - Metrics tracking (passed/failed/skipped by category)
+  - JSON report output
+  - Enhanced console output
+- **Enhanced CI/CD Pipeline**:
+  - Separate jobs for each test layer
+  - Lint and type checking
+  - Parallel test execution
+  - Artifact uploads
+  - Test report aggregation
+- **API & Contract Test Examples**:
+  - Complete API testing suite
+  - Contract validation examples
+  - Schema testing utilities
+
+### Changed
+- Updated base configuration to use custom reporter
+- Enhanced package.json with new test layer scripts
+- Improved documentation with new features
+
+### Documentation
+- Updated README with AI features and test layers
+- Added examples for all test types
+- Enhanced setup instructions
+
 ## [Unreleased]
 
 ### Planned
-- API testing support
 - Visual regression testing
 - Performance testing utilities
 - Enhanced cloud device farm integration
 - Additional example test scenarios
+- Real OpenAI API integration (currently uses mock responses)
 
 ---
 
