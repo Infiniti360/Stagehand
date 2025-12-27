@@ -10,7 +10,7 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    container_name: playwright-boilerplate
+    container_name: stagehand
     profiles:
       - testing
     environment:
