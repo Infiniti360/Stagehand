@@ -1,11 +1,11 @@
-# Playwright Boilerplate - Summary
+# Stagehand - Summary
 
-This boilerplate repository has been created with all the necessary components for Playwright testing with Web, Mobile, Native, Docker, and Appium support.
+Stagehand is a scalable Playwright automation framework that provides all the necessary components for comprehensive end-to-end testing with Web, Mobile, Native, Docker, and Appium support.
 
 ## Repository Structure
 
 ```
-playwright-boilerplate/
+Stagehand/
 ├── src/
 │   ├── configs/                    # Playwright configurations
 │   │   ├── playwright.base.config.ts    # Base config shared by all
@@ -139,10 +139,10 @@ See `.env.example` for all available environment variables:
 
 ## Next Steps
 
-1. **Copy the boilerplate** to your new repository
+1. **Clone Stagehand** or use it as a template for your project
 2. **Install dependencies:** `npm install`
 3. **Install browsers:** `npm run playwright:install`
-4. **Configure environment:** Copy `.env.example` to `.env` and update
+4. **Configure environment:** Copy `.env.example` to `.env` and update with your settings
 5. **Write your tests** in the `tests/` directory
 6. **Run tests:** `npm test`
 

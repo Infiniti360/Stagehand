@@ -1,6 +1,6 @@
-# Setup Guide
+# Stagehand Setup Guide
 
-This guide will help you set up the Playwright boilerplate for your project.
+This guide will help you set up Stagehand for your project.
 
 ## Quick Start
 
