@@ -343,7 +343,16 @@ jobs:
 
 MIT
 
+## Documentation
+
+- [README.md](README.md) - Main documentation
+- [SETUP.md](SETUP.md) - Detailed setup instructions
+- [ARCHITECTURE.md](ARCHITECTURE.md) - Framework architecture and design
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guidelines
+- [SUMMARY.md](SUMMARY.md) - Project overview
+- [CHANGELOG.md](CHANGELOG.md) - Version history
+
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to Stagehand.
 
